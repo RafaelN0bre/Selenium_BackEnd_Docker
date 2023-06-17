@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Response, status
-from src.utils.scrap_consulta_candidato import consulta_candidato
+from src.scraps.scrap_consulta_candidato import consulta_candidato
 
 router = APIRouter()
 

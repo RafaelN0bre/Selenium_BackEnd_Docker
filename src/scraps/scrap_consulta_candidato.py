@@ -10,8 +10,19 @@ from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
 # chrome_options.add_argument('--headless')  # Run Chrome in headless mode (without a GUI)
 
+def set_chrome_options() -> Options:
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_prefs = {}
+    chrome_options.experimental_options["prefs"] = chrome_prefs
+    chrome_prefs["profile.default_content_settings"] = {"images": 2}
+    return chrome_options
+
 # Create a new instance of the Chrome driver
-navegador = webdriver.Chrome()
+navegador = webdriver.Chrome(options=set_chrome_options())
+
 
 # navegador.get(os.getenv("RESULT_URL"))
 navegador.get("https://security.cebraspe.org.br/ConsultaOnline/UNB_23_ACESSOENEM/1983/7d6638f3-928d-46f4-b7bd-9ace99ad2b70/Consulta")
