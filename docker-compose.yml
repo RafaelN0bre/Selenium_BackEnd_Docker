@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  back_scrap_enem:
+    container_name: back_scrap_enem
+    build:
+      context: .
+      dockerfile: back_and_scrap/Dockerfile
+    volumes:
+      - ./src:/home/src
+    env_file: .env
+    ports:
+      - ${PORT}:${PORT}
+
